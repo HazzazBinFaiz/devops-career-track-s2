@@ -37,8 +37,10 @@ ip netns exec green ip addr add 10.0.0.20/24 dev veth-green-ns
 ip link set v-net up
 ip netns exec red ip link set lo up
 ip netns exec red ip link set veth-red-ns up
+ip link set veth-red-br up
 ip netns exec green ip link set lo up
 ip netns exec green ip link set veth-green-ns up
+ip link set veth-green-br up
 ```
 
 
@@ -55,7 +57,13 @@ ip netns exec red ping -c 3 10.0.0.20
 ```
 Output
 ```sh
-
+PING 10.0.0.20 (10.0.0.20) 56(84) bytes of data.
+64 bytes from 10.0.0.20: icmp_seq=1 ttl=64 time=0.071 ms
+64 bytes from 10.0.0.20: icmp_seq=2 ttl=64 time=0.043 ms
+64 bytes from 10.0.0.20: icmp_seq=3 ttl=64 time=0.044 ms
+--- 10.0.0.20 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2038ms
+rtt min/avg/max/mdev = 0.043/0.052/0.071/0.013 ms
 ```
 
 From green to red
@@ -65,7 +73,13 @@ ip netns exec green ping -c 3 10.0.0.10
 
 Output
 ```sh
-
+PING 10.0.0.10 (10.0.0.10) 56(84) bytes of data.
+64 bytes from 10.0.0.10: icmp_seq=1 ttl=64 time=0.048 ms
+64 bytes from 10.0.0.10: icmp_seq=2 ttl=64 time=0.049 ms
+64 bytes from 10.0.0.10: icmp_seq=3 ttl=64 time=0.044 ms
+--- 10.0.0.10 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2045ms
+rtt min/avg/max/mdev = 0.044/0.047/0.049/0.002 ms
 ```
 
 ### Cleanup
