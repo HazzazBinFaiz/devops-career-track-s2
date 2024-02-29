@@ -34,6 +34,10 @@ ip link set veth-green-br master v-net
 ip addr add 10.0.0.1/24 dev v-net
 ip netns exec red ip addr add 10.0.0.10/24 dev veth-red-ns
 ip netns exec green ip addr add 10.0.0.20/24 dev veth-green-ns
+```
+
+### Up all interfaces and bridge
+```sh
 ip link set v-net up
 ip netns exec red ip link set lo up
 ip netns exec red ip link set veth-red-ns up
