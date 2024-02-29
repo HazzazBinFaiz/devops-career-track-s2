@@ -1,4 +1,4 @@
-# Connectivity between 2 network namespace via veth
+# Connecting two network namespaces via veth
 
 ### Objectives
  - Create 2 network namespace
