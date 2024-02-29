@@ -64,5 +64,10 @@ PING 192.168.1.10 (192.168.1.10) 56(84) bytes of data.
 rtt min/avg/max/mdev = 0.014/0.022/0.027/0.005 ms
 ```
 
+### Cleanup
+```sh
+ip netns delete red
+ip netns delete green
+```
 
 
