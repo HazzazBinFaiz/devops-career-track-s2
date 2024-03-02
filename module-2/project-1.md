@@ -14,8 +14,8 @@ apt update && apt -y upgrade && apt install -y iproute2 iputils-ping net-tools t
 
 ### Create bridge and a network namespace
 ```sh
-ip link add v-net type bridge
 ip netns add red
+ip link add v-net type bridge
 ```
 
 ### Create veth and connect to a namespaces
